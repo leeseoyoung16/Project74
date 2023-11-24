@@ -4,7 +4,6 @@
 #define MAX_SIZE 20
 #define SWAP(x,y,t) ((t)=(x), (x)=(y), (y)=(t))
 
-int list[MAX_SIZE];
 int n;
 int move, compare;
 
@@ -33,7 +32,7 @@ void selection_sort(int list[], int n) {
     }
 }
 
-void selection_sort2(int list[], int n) {
+void selection_sort2(int list[], int n) { //과정을 출력하지 않은 selection
     int i, j, least, temp;
     move = 0;
     compare = 0;
@@ -55,37 +54,31 @@ int main(void) {
     int move_count = 0;
     int compare_count = 0;
     n = MAX_SIZE;
+    int list[MAX_SIZE];
 
     srand(time(NULL));
     for (i = 0; i < n; i++)
         list[i] = rand() % 100;
 
+    
     printf("Original list\n");
     print_array(list, n);
 
     printf("Selection Sort\n");
     selection_sort(list, n);
 
-    printf("Move Count: %d\n", move);
-    printf("Compare Count: %d\n\n", compare);
-
     move_count += move;
     compare_count += compare;
+
+    printf("%d %d", move, compare);
 
     for (j = 1; j <= 19; j++) {
         for (i = 0; i < n; i++)
             list[i] = rand() % 100;
-
-        printf("Original list\n");
-        print_array(list, n);
-
-        printf("Selection Sort\n");
         selection_sort2(list, n);
-        print_array(list, n);
         
         move_count += move;
         compare_count += compare;
-        printf("\n");
 
     }
     printf("Average Move Count: %d\n", move_count / 20);
