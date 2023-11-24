@@ -66,26 +66,18 @@ int main(void) {
     printf("Selection Sort\n");
     selection_sort(list, n);
 
-    printf("Move Count: %d\n", move);
-    printf("Compare Count: %d\n\n", compare);
-
     move_count += move;
     compare_count += compare;
+
 
     for (j = 1; j <= 19; j++) {
         for (i = 0; i < n; i++)
             list[i] = rand() % 100;
 
-        printf("Original list\n");
-        print_array(list, n);
-
-        printf("Selection Sort\n");
         selection_sort2(list, n);
-        print_array(list, n);
-        
+
         move_count += move;
         compare_count += compare;
-        printf("\n");
 
     }
     printf("Average Move Count: %d\n", move_count / 20);
